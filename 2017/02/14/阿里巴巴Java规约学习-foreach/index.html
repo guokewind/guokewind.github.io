@@ -6,149 +6,42 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>风中过客的个人小站</title>
+  <title>阿里巴巴Java规约学习-foreach | 风中过客的个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#你好
-
-Bird
-McHale
-Parish
-
-
-己所不欲，勿施于人
-
-
-1
-2
-3
-
-gkwind
-
-粗体*斜体
-
-
-
-Tables
-Are
-Cool
-
-
-
-
-col 3 is
-right-aligned
-$1600
-
-
-col 2 is
-centered
-$12
-
-
-zebra stripes
-are neat
-$1
-
-
-
-print(&amp;#39;hello world&amp;#39;)">
+  <meta name="description" content="7. 【强制】不要在 foreach 循环里进行元素的 remove / add 操作。 remove 元素请使用 Iterator
+方式，如果并发操作，需要对 Iterator 对象加锁。
+反例： 
+List&amp;lt;String&amp;gt; a = new ArrayList&amp;lt;String&amp;gt;();
+    a.add(&amp;quot;1&amp;quot;);
+    a.add(&amp;quot;2&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="风中过客的个人小站">
-<meta property="og:url" content="http://yoursite.com/2017/02/13/test/index.html">
+<meta property="og:title" content="阿里巴巴Java规约学习-foreach">
+<meta property="og:url" content="http://yoursite.com/2017/02/14/阿里巴巴Java规约学习-foreach/index.html">
 <meta property="og:site_name" content="风中过客的个人小站">
-<meta property="og:description" content="#你好
-
-Bird
-McHale
-Parish
-
-
-己所不欲，勿施于人
-
-
-1
-2
-3
-
-gkwind
-
-粗体*斜体
-
-
-
-Tables
-Are
-Cool
-
-
-
-
-col 3 is
-right-aligned
-$1600
-
-
-col 2 is
-centered
-$12
-
-
-zebra stripes
-are neat
-$1
-
-
-
-print(&amp;#39;hello world&amp;#39;)">
-<meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2255615511,818891253&fm=23&gp=0.jpg">
-<meta property="og:updated_time" content="2017-02-12T19:47:30.454Z">
+<meta property="og:description" content="7. 【强制】不要在 foreach 循环里进行元素的 remove / add 操作。 remove 元素请使用 Iterator
+方式，如果并发操作，需要对 Iterator 对象加锁。
+反例： 
+List&amp;lt;String&amp;gt; a = new ArrayList&amp;lt;String&amp;gt;();
+    a.add(&amp;quot;1&amp;quot;);
+    a.add(&amp;quot;2&amp;">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213150134707?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213150157426?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213150358622?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213153607317?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213153607317?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213150134707?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213155819209?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170213161356327?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-02-13T16:30:02.265Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风中过客的个人小站">
-<meta name="twitter:description" content="#你好
-
-Bird
-McHale
-Parish
-
-
-己所不欲，勿施于人
-
-
-1
-2
-3
-
-gkwind
-
-粗体*斜体
-
-
-
-Tables
-Are
-Cool
-
-
-
-
-col 3 is
-right-aligned
-$1600
-
-
-col 2 is
-centered
-$12
-
-
-zebra stripes
-are neat
-$1
-
-
-
-print(&amp;#39;hello world&amp;#39;)">
-<meta name="twitter:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2255615511,818891253&fm=23&gp=0.jpg">
+<meta name="twitter:title" content="阿里巴巴Java规约学习-foreach">
+<meta name="twitter:description" content="7. 【强制】不要在 foreach 循环里进行元素的 remove / add 操作。 remove 元素请使用 Iterator
+方式，如果并发操作，需要对 Iterator 对象加锁。
+反例： 
+List&amp;lt;String&amp;gt; a = new ArrayList&amp;lt;String&amp;gt;();
+    a.add(&amp;quot;1&amp;quot;);
+    a.add(&amp;quot;2&amp;">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170213150134707?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="风中过客的个人小站" type="application/atom+xml">
   
@@ -213,7 +106,13 @@ print(&amp;#39;hello world&amp;#39;)">
 		        
 			</div>
 		</nav>
-	</header>		
+		<!--开启网易云播放器-->
+		<nav class="header-music">
+      		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&amp;id=4940455&amp;auto=0&amp;height=66"></iframe>
+
+      </nav>
+
+	</header>
 </div>
 
     </div>
@@ -266,56 +165,82 @@ print(&amp;#39;hello world&amp;#39;)">
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-阿里巴巴Java规约学习-foreach" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      阿里巴巴Java规约学习-foreach
+    </h1>
+  
+
+        
+        <a href="/2017/02/14/阿里巴巴Java规约学习-foreach/" class="archive-article-date">
+  	<time datetime="2017-02-13T16:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#你好</p>
-<ol>
-<li>Bird</li>
-<li>McHale</li>
-<li>Parish</li>
-</ol>
-<blockquote>
-<p>己所不欲，勿施于人</p>
-</blockquote>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ul>
-<p><a href="http://www.gkwind.com" target="_blank" rel="external">gkwind</a></p>
-<p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2255615511,818891253&amp;fm=23&amp;gp=0.jpg" alt="图片"></p>
-<p><em>粗体</em><br>*斜体</p>
-<table>
-<thead>
-<tr>
-<th>Tables</th>
-<th style="text-align:center">Are</th>
-<th style="text-align:right">Cool</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>col 3 is</td>
-<td style="text-align:center">right-aligned</td>
-<td style="text-align:right">$1600</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
-<p><code>print(&#39;hello world&#39;)</code></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=4940455&auto=0&height=66"></iframe>
+        <blockquote>
+<pre><code>7. 【强制】不要在 foreach 循环里进行元素的 remove / add 操作。 remove 元素请使用 Iterator
+方式，如果并发操作，需要对 Iterator 对象加锁。
+反例： 
+List&lt;String&gt; a = new ArrayList&lt;String&gt;();
+    a.add(&quot;1&quot;);
+    a.add(&quot;2&quot;);
+    for (String temp : a) {
+    if(&quot;1&quot;.equals(temp)){
+    a.remove(temp);
+    }
+} 
+说明：以上代码的执行结果肯定会出乎大家的意料，那么试一下把“1”换成“2”，会是同样的
+结果吗？
+正例： 
+Iterator&lt;String&gt; it = a.iterator();
+    while(it.hasNext()){
+        String temp = it.next();
+        if(删除元素的条件){
+        it.remove();
+    }
+} 
+</code></pre></blockquote>
+<p>先看看输出结果: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">        a.add(<span class="string">"1"</span>);</div><div class="line">        a.add(<span class="string">"2"</span>);</div><div class="line"><span class="comment">//        for (String temp : a) &#123;</span></div><div class="line"><span class="comment">//            if ("1".equals(temp)) &#123;</span></div><div class="line"><span class="comment">//                a.remove(temp);//正常</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125; </span></div><div class="line"><span class="comment">//        for (String temp : a) &#123;// java.util.ConcurrentModificationException at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:859) at java.util.ArrayList$Itr.next(ArrayList.java:831)</span></div><div class="line"><span class="comment">//            if ("2".equals(temp)) &#123;</span></div><div class="line"><span class="comment">//                a.remove(temp);</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line">        Iterator&lt;String&gt; it = a.iterator();</div><div class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</div><div class="line">            String temp = it.next();</div><div class="line">            <span class="keyword">if</span> (<span class="string">"1"</span>.equals(temp)) &#123;<span class="comment">//不论是1,2都正常</span></div><div class="line">                it.remove();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.println(a.toString());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<h3 id="为什么用foreach的时候，1没问题，2出错了呢？"><a href="#为什么用foreach的时候，1没问题，2出错了呢？" class="headerlink" title="为什么用foreach的时候，1没问题，2出错了呢？"></a>为什么用foreach的时候，1没问题，2出错了呢？</h3><p>先从报错看异常是怎么出来的。<br>由报错可知，是next方法中调用checkForComodification出错。</p>
+<p><img src="http://img.blog.csdn.net/20170213150134707?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="next"></p>
+<p><img src="http://img.blog.csdn.net/20170213150157426?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="checkForComodification"></p>
+<p><strong>所以是modeCount !=expectedModCount导致的。</strong></p>
+<p><a href="http://www.cnblogs.com/vinozly/p/5465454.html" target="_blank" rel="external">foreach是通过Iterable接口在序列中进行移动。</a><br>    这里在foreach处打断点，进入可以知道：<br>    <strong>赋值给temp的时候先new Itr()(<em>仅第一次</em>)，Itr对象再hasNext()判断，接着再调用next()赋值。</strong></p>
+<p>expectedModCount是初始化(此时生成一个Iterator对象)的时候被赋值的。而modCount又是AbstractList的变量。</p>
+<p><img src="http://img.blog.csdn.net/20170213150358622?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="expectedModCount"></p>
+<p><strong>每次调用list的add/remove的时候，modCount++，而这时它并没有传递给expectedModCount。</strong></p>
+<p><img src="http://img.blog.csdn.net/20170213153607317?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="modCount会变化"></p>
+<p>当第一次remove掉”2”后，modCount改变 ，for(String temp:a)的时候，会调用ArrayList$Itr.next()方法，next方法会检查modCount是否等于expectedModCount，所以用foreach的时候remove 2出错了。</p>
+<hr>
+<h3 id="foreach的时候remove-1没出错呢？"><a href="#foreach的时候remove-1没出错呢？" class="headerlink" title="foreach的时候remove 1没出错呢？"></a>foreach的时候remove 1没出错呢？</h3><p>稍微改下代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">       a.add(<span class="string">"1"</span>);</div><div class="line">       a.add(<span class="string">"2"</span>);</div><div class="line">       <span class="keyword">int</span> n=<span class="number">0</span>;</div><div class="line">       <span class="keyword">for</span> (String temp : a) &#123;<span class="comment">//正常,但是n为1，说明只有一次</span></div><div class="line">           n++;<span class="comment">// </span></div><div class="line">           System.out.println(n);<span class="comment">//只输出1次:1</span></div><div class="line">           <span class="keyword">if</span> (<span class="string">"1"</span>.equals(temp)) &#123;</div><div class="line">               a.remove(temp);</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
+<p>输出结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">[2]</div></pre></td></tr></table></figure></p>
+<pre><code>可见,foreach 只执行了一次循环。
+</code></pre><hr>
+<h3 id="是什么导致本该两次的循环只进入了一次？"><a href="#是什么导致本该两次的循环只进入了一次？" class="headerlink" title="是什么导致本该两次的循环只进入了一次？"></a>是什么导致本该两次的循环只进入了一次？</h3><p>之前说到foreach赋值的时候，会先先用hasNext判断。cursor！=size才进入循环体。<br>这里的<strong>cursor指的是当前元素的index</strong>。循环体进入一次后，remove掉”1”，此时size由2变成了1，cursor也由于next后变为1。再次 for (String temp : a)的时候先调用hasNext因为其相等，所以不再进入循环体。</p>
+<p><strong>remove后size–:</strong></p>
+<p><img src="http://img.blog.csdn.net/20170213153607317?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="remove后size--"></p>
+<p><strong>next后,cursor+1:</strong></p>
+<p><img src="http://img.blog.csdn.net/20170213150134707?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="next"></p>
+<p><strong>hasNext比较</strong></p>
+<p><img src="http://img.blog.csdn.net/20170213155819209?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="hasNext"></p>
+<hr>
+<h3 id="为什么直接用Iterator的remove是正常的？"><a href="#为什么直接用Iterator的remove是正常的？" class="headerlink" title="为什么直接用Iterator的remove是正常的？"></a>为什么直接用Iterator的remove是正常的？</h3><p>a.iterator()直接return new Itr()，Itr 实现了Iterator。<br>我们看看Itr的remove方法：</p>
+<p><img src="http://img.blog.csdn.net/20170213161356327?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdGhld2luZGtlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Itr的remove方法"></p>
+<p>这里明显看出当它remove后， 马上把modCount的值赋值到了expectedModCount上，所以不会出现list.remove那样报ConcurrentModificationException 。</p>
+<p><strong> 当然如果并发操作，需要对 Iterator 对象加锁。</strong></p>
+<p>感谢阿里巴巴的Java规约~</p>
+
       
 
       
@@ -344,6 +269,17 @@ print(&amp;#39;hello world&amp;#39;)">
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -394,7 +330,7 @@ print(&amp;#39;hello world&amp;#39;)">
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/13/test/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/14/阿里巴巴Java规约学习-foreach/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -406,6 +342,25 @@ print(&amp;#39;hello world&amp;#39;)">
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2017/02/14/在hexo-yilia中使用网易云/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+           hexo中插入音乐
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/13/开始使用hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开始使用hexo</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -445,7 +400,7 @@ print(&amp;#39;hello world&amp;#39;)">
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -502,6 +457,18 @@ print(&amp;#39;hello world&amp;#39;)">
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

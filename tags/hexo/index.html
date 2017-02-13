@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>风中过客的个人小站</title>
+  <title>Tag: hexo | 风中过客的个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="没事就学学，总会有收获">
 <meta property="og:type" content="website">
 <meta property="og:title" content="风中过客的个人小站">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/hexo/index.html">
 <meta property="og:site_name" content="风中过客的个人小站">
 <meta property="og:description" content="没事就学学，总会有收获">
 <meta name="twitter:card" content="summary">
@@ -213,158 +213,6 @@
 
 
   
-    <article id="post-阿里巴巴Java规约学习-foreach" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/14/阿里巴巴Java规约学习-foreach/">阿里巴巴Java规约学习-foreach</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/14/阿里巴巴Java规约学习-foreach/" class="archive-article-date">
-  	<time datetime="2017-02-13T16:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<pre><code>7. 【强制】不要在 foreach 循环里进行元素的 remove / add 操作。 remove 元素请使用 Iterator
-方式，如果并发操作，需要对 Iterator 对象加锁。
-反例： 
-List&lt;String&gt; a = new ArrayList&lt;String&gt;();
-    a.add(&quot;1&quot;);
-    a.add(&quot;2&quot;);
-    for (String temp : a) {
-    if(&quot;1&quot;.equals(temp)){
-    a.remove(temp);
-    }
-} 
-说明：以上代码的执行结果肯定会出乎大家的意料，那么试一下把“1”换成“2”，会是同样的
-结果吗？
-正例： 
-Iterator&lt;String&gt; it = a.iterator();
-    while(it.hasNext()){
-        String temp = it.next();
-        if(删除元素的条件){
-        it.remove();
-    }
-} 
-</code></pre></blockquote>
-<p>先看看输出结果: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">        a.add(<span class="string">"1"</span>);</div><div class="line">        a.add(<span class="string">"2"</span>);</div><div class="line"><span class="comment">//        for (String temp : a) &#123;</span></div><div class="line"><span class="comment">//            if ("1".equals(temp)) &#123;</span></div><div class="line"><span class="comment">//                a.remove(temp);//正常</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125; </span></div><div class="line"><span class="comment">//        for (String temp : a) &#123;// java.util.ConcurrentModificationException at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:859) at java.util.ArrayList$Itr.next(ArrayList.java:831)</span></div><div class="line"><span class="comment">//            if ("2".equals(temp)) &#123;</span></div><div class="line"><span class="comment">//                a.remove(temp);</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line">        Iterator&lt;String&gt; it = a.iterator();</div><div class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</div><div class="line">            String temp = it.next();</div><div class="line">            <span class="keyword">if</span> (<span class="string">"1"</span>.equals(temp)) &#123;<span class="comment">//不论是1,2都正常</span></div><div class="line">                it.remove();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.println(a.toString());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/02/14/阿里巴巴Java规约学习-foreach/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/14/阿里巴巴Java规约学习-foreach/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-开始使用hexo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/13/开始使用hexo/">开始使用hexo</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/13/开始使用hexo/" class="archive-article-date">
-  	<time datetime="2017-02-13T15:42:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>被hexo的简洁、方便吸引。</p>
-<p>今后会在这里记录我的点点滴滴。</p>
-<p>谢谢。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/13/开始使用hexo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-hexo错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -431,7 +279,6 @@ Iterator&lt;String&gt; it = a.iterator();
   
   
 
-
           </div>
         </div>
       </div>
@@ -451,10 +298,10 @@ Iterator&lt;String&gt; it = a.iterator();
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
