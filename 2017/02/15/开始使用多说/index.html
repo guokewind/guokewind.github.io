@@ -6,17 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: java | 风中过客的个人小站</title>
+  <title>博客优化 | 风中过客的个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="没事就学学，总会有收获">
-<meta property="og:type" content="website">
-<meta property="og:title" content="风中过客的个人小站">
-<meta property="og:url" content="http://yoursite.com/tags/java/index.html">
+  <meta name="description" content="更新时间:2017年2月15日01:35:18
+使用多说我使用的是yilia。
+在_config.yml中添加多说的配置：
+duoshuo: 你站点的short_name
+修改themes\landscape\layout\_partial\article.ejs
+把&amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;&amp;lt;/section&amp;gt;之间的代码换成多说的通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客优化">
+<meta property="og:url" content="http://yoursite.com/2017/02/15/开始使用多说/index.html">
 <meta property="og:site_name" content="风中过客的个人小站">
-<meta property="og:description" content="没事就学学，总会有收获">
+<meta property="og:description" content="更新时间:2017年2月15日01:35:18
+使用多说我使用的是yilia。
+在_config.yml中添加多说的配置：
+duoshuo: 你站点的short_name
+修改themes\landscape\layout\_partial\article.ejs
+把&amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;&amp;lt;/section&amp;gt;之间的代码换成多说的通">
+<meta property="og:updated_time" content="2017-02-14T17:35:20.286Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风中过客的个人小站">
-<meta name="twitter:description" content="没事就学学，总会有收获">
+<meta name="twitter:title" content="博客优化">
+<meta name="twitter:description" content="更新时间:2017年2月15日01:35:18
+使用多说我使用的是yilia。
+在_config.yml中添加多说的配置：
+duoshuo: 你站点的short_name
+修改themes\landscape\layout\_partial\article.ejs
+把&amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;&amp;lt;/section&amp;gt;之间的代码换成多说的通">
   
     <link rel="alternative" href="/atom.xml" title="风中过客的个人小站" type="application/atom+xml">
   
@@ -140,58 +156,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-阿里巴巴Java规约学习-foreach" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-开始使用多说" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/14/阿里巴巴Java规约学习-foreach/">阿里巴巴Java规约学习-foreach</a>
+    <h1 class="article-title" itemprop="name">
+      博客优化
     </h1>
   
 
         
-        <a href="/2017/02/14/阿里巴巴Java规约学习-foreach/" class="archive-article-date">
-  	<time datetime="2017-02-13T16:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
+        <a href="/2017/02/15/开始使用多说/" class="archive-article-date">
+  	<time datetime="2017-02-14T17:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<pre><code>7. 【强制】不要在 foreach 循环里进行元素的 remove / add 操作。 remove 元素请使用 Iterator
-方式，如果并发操作，需要对 Iterator 对象加锁。
-反例： 
-List&lt;String&gt; a = new ArrayList&lt;String&gt;();
-    a.add(&quot;1&quot;);
-    a.add(&quot;2&quot;);
-    for (String temp : a) {
-    if(&quot;1&quot;.equals(temp)){
-    a.remove(temp);
-    }
-} 
-说明：以上代码的执行结果肯定会出乎大家的意料，那么试一下把“1”换成“2”，会是同样的
-结果吗？
-正例： 
-Iterator&lt;String&gt; it = a.iterator();
-    while(it.hasNext()){
-        String temp = it.next();
-        if(删除元素的条件){
-        it.remove();
-    }
-} 
-</code></pre></blockquote>
-<p>先看看输出结果: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">        a.add(<span class="string">"1"</span>);</div><div class="line">        a.add(<span class="string">"2"</span>);</div><div class="line"><span class="comment">//        for (String temp : a) &#123;</span></div><div class="line"><span class="comment">//            if ("1".equals(temp)) &#123;</span></div><div class="line"><span class="comment">//                a.remove(temp);//正常</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125; </span></div><div class="line"><span class="comment">//        for (String temp : a) &#123;// java.util.ConcurrentModificationException at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:859) at java.util.ArrayList$Itr.next(ArrayList.java:831)</span></div><div class="line"><span class="comment">//            if ("2".equals(temp)) &#123;</span></div><div class="line"><span class="comment">//                a.remove(temp);</span></div><div class="line"><span class="comment">//            &#125;</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line">        Iterator&lt;String&gt; it = a.iterator();</div><div class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</div><div class="line">            String temp = it.next();</div><div class="line">            <span class="keyword">if</span> (<span class="string">"1"</span>.equals(temp)) &#123;<span class="comment">//不论是1,2都正常</span></div><div class="line">                it.remove();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.println(a.toString());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/02/14/阿里巴巴Java规约学习-foreach/#more">more >></a>
-        
+        <p>更新时间:2017年2月15日01:35:18</p>
+<h1 id="使用多说"><a href="#使用多说" class="headerlink" title="使用多说"></a>使用多说</h1><p>我使用的是<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia</a>。</p>
+<p>在_config.yml中添加多说的配置：</p>
+<pre><code>duoshuo: 你站点的short_name
+</code></pre><p>修改<code>themes\landscape\layout\_partial\article.ejs</code></p>
+<p>把<code>&lt;section id=&quot;comments&quot;&gt;&lt;/section&gt;</code>之间的代码换成多说的通用代码。</p>
+<p><a href="http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9" target="_blank" rel="external">参考</a></p>
+<p>一个人难免无聊，不知道谁会是我第一个评论者。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -202,7 +218,7 @@ Iterator&lt;String&gt; it = a.iterator();
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
@@ -211,18 +227,74 @@ Iterator&lt;String&gt; it = a.iterator();
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/14/阿里巴巴Java规约学习-foreach/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/15/开始使用多说/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/14/在hexo-yilia中使用网易云/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"> hexo中插入音乐</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -230,7 +302,29 @@ Iterator&lt;String&gt; it = a.iterator();
 
 
   
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="开始使用多说" data-title="博客优化" data-url="http://yoursite.com/2017/02/15/开始使用多说/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"guokewind"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
+
+
+
 
           </div>
         </div>
@@ -252,9 +346,9 @@ Iterator&lt;String&gt; it = a.iterator();
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
