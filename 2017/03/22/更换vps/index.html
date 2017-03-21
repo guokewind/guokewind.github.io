@@ -10,20 +10,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="成文时间：2017-03-22 01:31:00
 最近vultr有2.5美元一个月，还有活动，配置也不错。准备转移到vultr。长期有效的邀请链接
-安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置:">
+安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 更换vps">
 <meta property="og:url" content="http://yoursite.com/2017/03/22/更换vps/index.html">
 <meta property="og:site_name" content="风中过客的个人小站">
 <meta property="og:description" content="成文时间：2017-03-22 01:31:00
 最近vultr有2.5美元一个月，还有活动，配置也不错。准备转移到vultr。长期有效的邀请链接
-安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置:">
-<meta property="og:updated_time" content="2017-03-21T17:56:30.446Z">
+安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置">
+<meta property="og:updated_time" content="2017-03-21T18:06:55.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 更换vps">
 <meta name="twitter:description" content="成文时间：2017-03-22 01:31:00
 最近vultr有2.5美元一个月，还有活动，配置也不错。准备转移到vultr。长期有效的邀请链接
-安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置:">
+安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置">
   
     <link rel="alternative" href="/atom.xml" title="风中过客的个人小站" type="application/atom+xml">
   
@@ -179,15 +179,16 @@ var _hmt = _hmt || [];
       
         <p>成文时间：2017-03-22 01:31:00</p>
 <p>最近vultr有2.5美元一个月，还有活动，配置也不错。准备转移到vultr。<br><a href="http://www.vultr.com/?ref=7133547" target="_blank" rel="external">长期有效的邀请链接</a></p>
-<p>安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置:<br><a id="more"></a></p>
-<h4 id="1-SSH-更换端口，20001"><a href="#1-SSH-更换端口，20001" class="headerlink" title="1.SSH 更换端口，20001"></a>1.SSH 更换端口，20001</h4><p>用下面命令进入配置文件。</p>
+<p>安装的是centos7,之前用的centos6，有些不同。记录下我的服务器配置</p>
+<a id="more"></a>
+<h3 id="SSH-更换端口"><a href="#SSH-更换端口" class="headerlink" title="SSH 更换端口"></a>SSH 更换端口</h3><p>用下面命令进入配置文件。</p>
 <pre><code>vi /etc/ssh/sshd_config
 </code></pre><p>找到#port 22，将前面的#去掉，然后修改端口 port 20001（自己设定）<br><strong>建议先添加新端口，待新端口可以连接后再去掉22端口</strong></p>
 <p>然后重启ssh服务。</p>
 <pre><code>service sshd restart
 </code></pre><p>开放20001端口</p>
 <pre><code>firewall-cmd --zone=public --add-port=20001/tcp --permanent
-</code></pre><h4 id="2-新建一个用户代替root"><a href="#2-新建一个用户代替root" class="headerlink" title="2.新建一个用户代替root"></a>2.新建一个用户代替root</h4><p>//添加一个名为tommy的用户</p>
+</code></pre><h3 id="新建一个用户代替root"><a href="#新建一个用户代替root" class="headerlink" title="新建一个用户代替root"></a>新建一个用户代替root</h3><p>//添加一个名为tommy的用户</p>
 <pre><code>adduser tommy 
 
 passwd tommy   //修改密码
@@ -197,7 +198,7 @@ passwd tommy   //修改密码
 root    ALL=(ALL)     ALL
 tommy   ALL=(ALL)     ALL
 </code></pre><p>修改完毕，现在可以用tommy帐号登录，然后用命令 su - ，即可获得root权限进行操作。</p>
-<h4 id="3-使用密钥登录"><a href="#3-使用密钥登录" class="headerlink" title="3.使用密钥登录"></a>3.使用密钥登录</h4><p>使用xshell-工具-新建用户密钥生成向导,一直下一步，保存生成的公钥，私钥。把公钥复制保存到Linux服务器的authorized_keys文件里面。</p>
+<h2 id="使用密钥登录"><a href="#使用密钥登录" class="headerlink" title="使用密钥登录"></a>使用密钥登录</h2><p>使用xshell-工具-新建用户密钥生成向导,一直下一步，保存生成的公钥，私钥。把公钥复制保存到Linux服务器的authorized_keys文件里面。</p>
 <p>需要把该信息拷贝到Linux服务器的特定文件中：~/.ssh/authroized_keys<br>其中，“~”表示对应用户的主目录，以tommy为例。<br>若.ssh目录不存在，请创建它，并把公钥信息写入文件中：</p>
 <pre><code>mkdir ~/.ssh
 chmod 700 ~/.ssh
@@ -262,7 +263,19 @@ chmod 600 ~/.ssh/authorized_keys
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vps , linux , vultr ,centos</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vps</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">vultr</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
         		</li>
       		
 		</ul>
@@ -274,7 +287,11 @@ chmod 600 ~/.ssh/authorized_keys
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/linux,vps/" class="article-tag-list-link color2">linux , vps</a>
+        			<a href="/categories/linux/" class="article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/vps/" class="article-tag-list-link color4">vps</a>
         		</li>
       		
 		</ul>
@@ -489,7 +506,19 @@ chmod 600 ~/.ssh/authorized_keys
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vps , linux , vultr ,centos</a>
+                <a href="javascript:void(0)" class="js-tag color4">vps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">vultr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
