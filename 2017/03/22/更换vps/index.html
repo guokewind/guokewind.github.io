@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="风中过客的个人小站">
 <meta property="og:description" content="成文时间：2017-03-22 01:31:00更新时间：2017-03-29最近vultr有2.5美元一个月，还有活动，配置也不错。准备转移到vultr。长期有效的邀请链接。还是用搬瓦工,顺便广告：kvm,28$包年,512内存,目前4机房   ,   19$包年,512mb内存，1机房,稳定好用。优惠码：IAMSMART5Q74B8（节省4.77%）
 安装的是centos7,之前用的cento">
-<meta property="og:updated_time" content="2017-03-28T18:47:55.870Z">
+<meta property="og:updated_time" content="2017-04-24T18:25:38.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 更换vps">
 <meta name="twitter:description" content="成文时间：2017-03-22 01:31:00更新时间：2017-03-29最近vultr有2.5美元一个月，还有活动，配置也不错。准备转移到vultr。长期有效的邀请链接。还是用搬瓦工,顺便广告：kvm,28$包年,512内存,目前4机房   ,   19$包年,512mb内存，1机房,稳定好用。优惠码：IAMSMART5Q74B8（节省4.77%）
@@ -185,6 +185,8 @@ var _hmt = _hmt || [];
 <pre><code>service sshd restart
 </code></pre><p>开放20001端口</p>
 <pre><code>firewall-cmd --zone=public --add-port=20001/tcp --permanent
+或者
+iptables -A INPUT -p tcp -dport 20001 -j ACCEPT
 </code></pre><p> 如果是iptables，第一次配置先</p>
 <pre><code>iptables -F //清除所有的已订定的规则，如果清空后连不上，可能是预设规则为DROP，可通过iptable -nL查看
 </code></pre><h3 id="新建一个用户代替root"><a href="#新建一个用户代替root" class="headerlink" title="新建一个用户代替root"></a>新建一个用户代替root</h3><p>//添加一个名为tommy的用户</p>
@@ -236,6 +238,61 @@ chmod 600 ~/.ssh/authorized_keys
 <p>不太清楚最好别运行。</p>
 <pre><code>iptables -A INPUT -j REJECT //!!在运行此规则之前先确保ssh端口已经生效（service iptables restart）
 </code></pre><p>如果已经运行又断开了连接，试着重启一下服务器，只要没永久生效那么还能连上。</p>
+<hr>
+<p>2017年4月25日更新：拖了一个月了。。</p>
+<p>##安装nginx</p>
+<p>###需要下载的东西</p>
+<p>1.nginx (下载：<a href="http://nginx.org/en/download.html" target="_blank" rel="external">http://nginx.org/en/download.html</a> )<br>2.gzip 模块需要 zlib 库 ( 下载: <a href="http://www.zlib.net/" target="_blank" rel="external">http://www.zlib.net/</a> )<br>3.rewrite 模块需要 pcre 库 ( 下载: <a href="http://www.pcre.org/" target="_blank" rel="external">http://www.pcre.org/</a> )<br>4.ssl 功能需要 openssl 库 ( 下载: <a href="http://www.openssl.org/" target="_blank" rel="external">http://www.openssl.org/</a> )<br>下载：</p>
+<pre><code>wget    http://nginx.org/download/nginx-1.10.3.tar.gz http://www.zlib.net/zlib-1.2.11.tar.gz https://ftp.pcre.org/pub/pcre/pcre2-10.23.tar.gz https://www.openssl.org/source/openssl-1.1.0e.tar.gz 
+</code></pre><p>解压：</p>
+<pre><code>tar -zxvf nginx-1.10.3.tar.gz
+tar -zxvf zlib-1.2.11.tar.gz
+tar -zxvf pcre2-10.23.tar.gz
+tar -zxvf openssl-1.1.0e.tar.gz 
+</code></pre><p>依赖包安装顺序依次为:openssl、zlib、pcre, 然后安装Nginx包。</p>
+<pre><code>mv nginx-1.10.3 openssl-1.1.0e pcre2-10.21 zlib-1.2.11 /usr/local/
+</code></pre><p>编译安装<br>openssl ：</p>
+<pre><code>cd /usr/local/openssl-1.1.0e  &amp;&amp; ./config &amp;&amp; make &amp;&amp; make install
+</code></pre><p>prce:</p>
+<pre><code>cd /usr/local/pcre2-10.23 &amp;&amp;  ./configure &amp;&amp; make &amp;&amp; make install
+</code></pre><p>zlib: 如果安装失败，试着<code>yum install gcc</code></p>
+<pre><code>cd /usr/local/zlib-1.2.11 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install
+</code></pre><p>nginx:(这里我安装了ssl模块)</p>
+<p><strong><em>pcre别乱删除</em></strong></p>
+<pre><code>cd /usr/local/nginx-1.10.3 &amp;&amp;./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module &amp;&amp; make &amp;&amp; make install
+</code></pre><p> 如果报错 </p>
+<blockquote>
+<p>./configure: error: the HTTP rewrite module requires the PCRE library.<br>解决：</p>
+</blockquote>
+<pre><code>yum -y install pcre-devel
+</code></pre><p>报错:</p>
+<blockquote>
+<p>./configure: error: SSL modules require the OpenSSL library.</p>
+</blockquote>
+<pre><code>yum -y install openssl openssl-devel  
+</code></pre><p>查看已经安装好的模块</p>
+<pre><code>/usr/local/nginx/sbin/nginx -V
+
+nginx version: nginx/1.10.3
+</code></pre><p>提示下面的信息表示已经安装好了。</p>
+<blockquote>
+<p>built by gcc 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) </p>
+<p>built with OpenSSL 1.0.1e-fips 11 Feb 2013</p>
+<p>TLS SNI support enabled</p>
+<p>configure arguments: –prefix=/usr/local/nginx –with-http_stub_status_module –with-http_ssl_module</p>
+</blockquote>
+<p>ssl证书我使用的腾讯的一年免费证书。</p>
+<p><a href="https://www.qcloud.com/document/product/400/4143#2.-nginx-.E8.AF.81.E4.B9.A6.E9.83.A8.E7.BD.B2" target="_blank" rel="external">参考</a></p>
+<blockquote>
+<p>2.1 获取证书</p>
+<p>Nginx文件夹内获得SSL证书文件 1_www.domain.com_bundle.crt 和私钥文件 2_www.domain.com.key,<br>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。</p>
+<p>2.2 证书安装</p>
+<p>将域名 www.domain.com 的证书文件1_www.domain.com_bundle.crt 、私钥文件2_www.domain.com.key保存到同一个目录，例如/usr/local/nginx/conf目录下。<br>更新Nginx根目录下 conf/nginx.conf 文件如下：</p>
+<p>server {<br>        listen 443;<br>        server_name www.domain.com; #填写绑定证书的域名<br>        ssl on;<br>        ssl_certificate 1_www.domain.com_bundle.crt;<br>        ssl_certificate_key 2_www.domain.com.key;<br>        ssl_session_timeout 5m;<br>        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置<br>        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置<br>        ssl_prefer_server_ciphers on;<br>        location / {<br>            root   html; #站点目录<br>            index  index.html index.htm;<br>        }<br>    }<br>配置完成后，先用bin/nginx –t来测试下配置是否有误，正确无误的话，重启nginx。就可以使 <a href="https://www.domain.com" target="_blank" rel="external">https://www.domain.com</a> 来访问了。</p>
+<p>注：</p>
+<p>配置文件参数  说明<br>listen 443  SSL访问端口号为443<br>ssl on  启用SSL功能<br>ssl_certificate 证书文件<br>ssl_certificate_key 私钥文件<br>ssl_protocols   使用的协议<br>ssl_ciphers 配置加密套件，写法遵循openssl标准<br>2.3 使用全站加密，http自动跳转https（可选）</p>
+<p>对于用户不知道网站可以进行https访问的情况下，让服务器自动把http的请求重定向到https。<br>在服务器这边的话配置的话，可以在页面里加js脚本，也可以在后端程序里写重定向，当然也可以在web服务器来实现跳转。Nginx是支持rewrite的（只要在编译的时候没有去掉pcre）<br>在http的server里增加rewrite ^(.*) <a href="https://$host$1" target="_blank" rel="external">https://$host$1</a> permanent;<br>这样就可以实现80进来的请求，重定向为https了。</p>
+</blockquote>
 
       
 
